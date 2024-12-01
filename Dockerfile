@@ -1,19 +1,8 @@
-# FROM ruby:3.1.2
-
-# # 必要なパッケージのインストール
-# RUN apt-get update -qq && \
-#     apt-get install -y build-essential libpq-dev nodejs
-# RUN mkdir /myapp
-
-# WORKDIR /myapp
-# ADD Gemfile /myapp/Gemfile
-# ADD Gemfile.lock /myapp/Gemfile.lock
-# RUN bundle install
-# ADD . /myapp
-
 # ------------------------
 # 以下は下記記事を参考に作成したもの => 上手くいかず…
-# https://qiita.com/3Zz8Xx/items/3341a795e1c6fa24bf33
+# ref:
+#   https://qiita.com/3Zz8Xx/items/3341a795e1c6fa24bf33
+#   https://docs.docker.jp/compose/rails.html
 # ------------------------
 FROM ruby:3.1.2
 
