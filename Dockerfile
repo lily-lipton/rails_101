@@ -1,16 +1,34 @@
+# FROM ruby:3.1.2
+
+# # 必要なパッケージのインストール
+# RUN apt-get update -qq && \
+#     apt-get install -y build-essential libpq-dev nodejs
+# RUN mkdir /myapp
+
+# WORKDIR /myapp
+# ADD Gemfile /myapp/Gemfile
+# ADD Gemfile.lock /myapp/Gemfile.lock
+# RUN bundle install
+# ADD . /myapp
+
+# ------------------------
+# 以下は下記記事を参考に作成したもの => 上手くいかず…
+# https://qiita.com/3Zz8Xx/items/3341a795e1c6fa24bf33
+# ------------------------
 FROM ruby:3.1.2
 
 # 必要なパッケージのインストール
 RUN apt-get update -qq && \
-    apt-get install -y build-essential libpq-dev nodejs npm && \
+    apt-get install -y build-essential default-mysql-client default-libmysqlclient-dev nodejs npm && \
     npm install -g yarn
 
 # 作業ディレクトリの作成と設定
-WORKDIR /rails_101
+WORKDIR /myapp
 
 # BundlerとRailsのバージョンを固定
 RUN gem install bundler:2.3.14 && \
-    gem install rails:7.0.4
+    gem install rails:7.0.4 && \
+    gem install railties:7.0.4
 
 # GemfileとGemfile.lockをコピー
 COPY Gemfile* ./
