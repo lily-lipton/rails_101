@@ -1,3 +1,3 @@
 ## rails_101
 
-Rails learning repository.
+Learning Repository for the Rails Framework.
